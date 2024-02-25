@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoCrIA searchbox</title>
+    <style>
+         body {
+            background: linear-gradient(to right, #000,#3533cd);
+            color:aliceblue;
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0px;
+            text-align: center;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #results-container {
+            margin-top: auto;
+            text-align: left; /* Alinha o texto à esquerda dentro do #results-container */
+        }
+
+        .result-item {
+            margin-bottom: 20px;
+        }
+
+        #result-count {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="results-container">
+        <h1>Resultados da Pesquisa</h1>
+        <p>Quanto menor a taxa de pesquisa, MELHOR compatibilidade tem o link com a pesquisa</p>
+        <br>
+        <p id="result-count">{{ resultados.shape[0] }} resultados encontrados.</p>
+
+        {% if resultados.shape[0] > 0 %}
+        {% for resultado in resultados.itertuples() %}
+            <div class="result-item">
+                <h2><a href="{{ resultado.link }}" target="_blank">{{ resultado.title }}</a></h2>
+                <p>Link: "{{ resultado.link }}" </p>
+                <p>Tokens: {{ resultado.tokens }}</p>
+                <p>Quantidade de Tokens: {{ resultado.qtd_token }}</p>
+                <p>Taxa de Pesquisa: {{ resultado.taxa_pesquisa }}</p>
+            </div>
+            <hr>
+        {% endfor %}
+        {% else %}
+        <p>Nenhum resultado encontrado.</p>
+        {% endif %}
+    </div>
+</body>
+
+</html>

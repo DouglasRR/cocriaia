@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles/fonts.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='styles/media.css') }}" rel="stylesheet">
+    <title>CoCrIA</title>
+</head>
+<body>
+    <header>
+        <ul> 
+            <a href="{{ url_for('search_page') }}"><li>Home</li></a>
+            <a href="https://www.instagram.com/cocriaia/"><li>Instagram</li></a>
+        </ul>
+    </header>
+    <article>
+        <div class="centrar-imagem">
+            <img src="{{ url_for('static', filename='images/cocrialogo.png') }}" alt="cocrialogo">
+        </div>
+    </article>
+    <main>
+        <aside>
+            <h1><span> Bem-vindo ao CoCria</span></h1>
+            <p>Seu portal especializado em tecnologias de inteligência artificial e ciência de dados! Em um vasto oceano de informações online, destacamo-nos como um motor de busca singular, focado exclusivamente em fornecer resultados relevantes para os entusiastas e profissionais dessas áreas dinâmicas.
+            </p>
+            <p>
+                A Inteligência Artificial é um campo revolucionário que envolve o desenvolvimento de sistemas e algoritmos capazes de realizar tarefas que, normalmente, exigiriam inteligência humana. Isso inclui reconhecimento de voz, visão computacional, processamento de linguagem natural e muito mais. A IA está transformando a maneira como interagimos com a tecnologia e o mundo ao nosso redor.
+            </p>
+            <p> 
+                Nosso compromisso com a especialização diferencia o CoCria, proporcionando uma experiência de busca mais direcionada e eficiente. Enquanto outros motores de busca oferecem uma ampla gama de informações, optamos por aperfeiçoar a busca, concentrando-nos naquilo que realmente importa para você: o universo fascinante da inteligência artificial e da ciência de dados.
+            </p>
+            <p> 
+                Seja você um profissional experiente ou um entusiasta iniciante, o CoCria está aqui para ser sua fonte confiável de conhecimento nesses campos vitais. Explore, descubra e aprofunde seus conhecimentos conosco no CoCria - onde a busca se encontra com a especialização.
+            </p>
+        </aside>
+    </main>
+    <a href="{{ url_for('search_page') }}"><input type="button" value="INICIE SUA JORNADA" class="my-button"></a>
+</body>
+</html>

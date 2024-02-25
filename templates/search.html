@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoCrIA searchbox</title>
+
+    <style>
+        body {
+            background: linear-gradient(to right, #000, #3533cd);
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0px;
+            color: white; /* Define a cor do texto da página como branco */
+        }
+
+        #content {
+            position: relative;
+            z-index: 1; /* Mantém o conteúdo acima do elemento de carregamento */
+        }
+
+        .logo {
+            margin-top: 20px;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo img {
+            width: 400px; /* Ajuste conforme necessário */
+            
+        }
+
+        .search-box{
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+
+    background: aliceblue;
+    height: 30px;
+    padding: 10px;
+    border-radius: 30px;
+
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-text{
+    background: none;
+    border: 0;
+    outline: 0;
+
+    padding: 0;
+
+    font-size: 16px;
+
+    transition: 0.4s;
+
+    width: 0;
+    
+    
+}
+
+.search.btn{
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+
+.search-box:hover> .search-text {
+    width: 320px ;
+    padding-left: 20px;
+}
+
+        #loading {
+            display: none;
+            position: absolute;
+            top: 120%; /* Ajuste conforme necessário */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0; /* Coloca o elemento de carregamento abaixo do conteúdo */
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Envolve o conteúdo da página em uma div chamada 'content' -->
+    <div id="content">
+        <article class="container">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/cocrialogo.png') }}" alt="cocrialogo">
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" class="search-text" placeholder="Pesquisar...">
+                <a class="search-btn" onclick="performSearch()">
+                    <img class="lupa" src="{{ url_for('static', filename='images/lupa.png') }}" alt="" width="25px"
+                        height="25px">
+                </a>
+            </div>
+        </article>
+
+        <!-- Elemento de carregamento -->
+        <div id="loading">Carregando...</div>
+
+    <script>
+        document.getElementById("searchInput").addEventListener("keyup", function (event) {
+            if (event.key === "Enter") {
+                performSearch();
+            }
+        });
+
+        async function performSearch() {
+            var searchTerm = document.getElementById("searchInput").value;
+
+            // Salva o título original da página
+            const originalTitle = document.title;
+
+            // Altera o título para indicar que está carregando
+            document.title = 'CoCrIA - Carregando...';
+
+            // Exibe o elemento de carregamento
+            document.getElementById("loading").style.display = "block";
+
+            try {
+                // Envia uma solicitação AJAX para a rota '/search' no servidor
+                const response = await fetch(`/search?q=${searchTerm}`);
+                const data = await response.json(); // assume que o servidor retorna dados JSON
+
+                // Atualiza a página com os resultados
+                document.open();
+                document.write(data);
+                document.close();
+            } catch (error) {
+                console.error('Erro durante a pesquisa:', error);
+            } finally {
+                // Restaura o título original da página
+                document.title = originalTitle;
+
+                // Esconde o elemento de carregamento, independentemente do resultado da pesquisa
+                document.getElementById("loading").style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
