@@ -1,0 +1,1 @@
+Para executar o motor de busca, é necessário excutar o Flask dentro do Main.py
