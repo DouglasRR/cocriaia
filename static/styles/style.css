@@ -1,0 +1,106 @@
+body{
+    background: linear-gradient(to right, #000,#3533cd);
+    color:aliceblue;
+    font-family: lemonmilk;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.centrar-imagem{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  
+}
+
+
+header{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+#tittle{
+    flex-direction: column;
+    line-height: 20px;
+    
+}
+li{
+    display: inline-block;
+    margin: 20px;
+    align-items: center;
+}
+
+h1{
+    font-size: 50px;
+    align-items: center;
+    margin: 0px;
+}
+
+a{
+    color:aliceblue
+}
+
+a:hover{
+    color: #e870d8;
+    transition: 0.3s all
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    text-align: center;
+    justify-content: center;
+}
+aside{
+    text-align: center;
+}
+
+span{
+    color:#e870d8;
+}
+
+p{
+    line-height: 25px;
+    max-width: 1500px;
+    align-items: center;
+    font-size: 22px;
+}
+
+img{
+    width: 500px;
+       
+}
+
+form{
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    margin-left: 41%;
+}
+
+
+form [type="button"]:hover{
+    color: #e870d8;
+    transition:0.3s all
+}
+
+input{
+    margin-left: 45%;
+    height: auto;
+    padding: 10%;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.my-button {
+    text-align: center;
+    background-color: #e870d8;
+    color: aliceblue;
+    font-weight: bold;
+    font-size: medium;
+    padding: 20px 20px;
+   
+}
